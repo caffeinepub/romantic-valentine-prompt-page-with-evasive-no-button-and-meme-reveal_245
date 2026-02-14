@@ -1,0 +1,16 @@
+{
+  "backend/main.mo": "Defines an empty Motoko actor with no methods or logic.",
+  "feature_evidence.json": "Contains feature evidence entries describing frontend changes for handling success image loading, error fallback, and correct asset paths.",
+  "frontend-file-summaries.txt": "Provides short human‑written summaries for key frontend files including App, styles, Tailwind config, and hooks.",
+  "frontend/index.css": "Tailwind base/theme setup defining color tokens and styles for light and dark modes.",
+  "frontend/index.html": "HTML entry point preloading the URL‑encoded success image and bootstrapping the React app.",
+  "frontend/src/App.tsx": "Main UI with Yes/No interaction, evasive No button, and a success screen showing a URL‑encoded image with loading and error states.",
+  "frontend/src/hooks/useActor.ts": "React hook that creates and manages the authenticated or anonymous backend actor via Internet Identity.",
+  "frontend/src/hooks/useEvasiveButton.ts": "Custom hook that moves a button to random safe positions on pointer or touch interactions.",
+  "frontend/src/hooks/useInternetIdentity.ts": "Context and hooks for managing Internet Identity login, stored identities, and auth client lifecycle.",
+  "frontend/src/hooks/useQueries.ts": "Empty placeholder export because no backend queries are needed.",
+  "frontend/src/index.css": "Global styles importing Google Fonts and defining romantic-themed color variables for Tailwind.",
+  "frontend/src/main.tsx": "Renders the app root with React Query and Internet Identity providers and loads global styles.",
+  "frontend/tailwind.config.js": "Tailwind CSS config enabling dark mode, custom color palette, typography/container/animate plugins, and extended fonts, shadows, and keyframes.",
+  "project_state.json": "Project metadata describing a romantic Valentine page, required image behavior, known issues, and feature definitions for UI and interactions."
+}

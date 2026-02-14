@@ -1,0 +1,60 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-make-the-success-result-view-reliably-display-the-image-asset-even-when-the-filename-contains-spaces-by-updating-the-img-src-to-use-a-url-encoded-path-for-the-exact-case-sensitive-filename-kanni-14-png-under-assets-generated",
+      "featureTitle": "Make the success/result view reliably display the image asset even when the filename contains spaces by updating the <img> src to use a URL-encoded path for the exact case-sensitive filename \"Kanni 14.PNG\" under \"/assets/generated/\".",
+      "files": [
+        "frontend/index.html",
+        "frontend/src/App.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-19"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-explicit-runtime-error-handling-for-the-success-result-image-so-that-if-the-image-fails-to-load-the-ui-shows-a-clear-english-fallback-message-and-preserves-the-rest-of-the-success-layout",
+      "featureTitle": "Add explicit runtime error handling for the success/result image so that if the image fails to load, the UI shows a clear English fallback message and preserves the rest of the success layout.",
+      "files": [
+        "frontend/src/App.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-20"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-ensure-the-frontend-static-assets-include-the-success-image-file-in-the-deployable-public-directory-at-the-exact-path-frontend-public-assets-generated-kanni-14-png-capital-k-space-png-extension-and-remove-avoid-any-references-on-the-success-screen-to-other-similarly-named-files-e-g-kanni-14-png-kanni-14-1-png-kanni-14-2-png",
+      "featureTitle": "Ensure the frontend static assets include the success image file in the deployable public directory at the exact path \"frontend/public/assets/generated/Kanni 14.PNG\" (capital K, space, .PNG extension), and remove/avoid any references on the success screen to other similarly-named files (e.g., \"kanni 14.PNG\", \"kanni 14-1.PNG\", \"kanni 14-2.PNG\").",
+      "files": [
+        "frontend/src/App.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-21"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

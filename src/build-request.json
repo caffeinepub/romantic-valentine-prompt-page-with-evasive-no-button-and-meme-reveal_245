@@ -1,0 +1,72 @@
+{
+  "kind": "build_request",
+  "title": "Restart image asset loading from scratch and make success image render reliably",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-19",
+      "text": "Make the success/result view reliably display the image asset even when the filename contains spaces by updating the <img> src to use a URL-encoded path for the exact case-sensitive filename \"Kanni 14.PNG\" under \"/assets/generated/\".",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "try it from the begining"
+        ]
+      },
+      "acceptanceCriteria": [
+        "After clicking “Yes”, the success screen requests the image via a URL-encoded path (space encoded as %20) while still referencing the exact filename \"Kanni 14.PNG\" (case-sensitive).",
+        "In Chrome and Safari (desktop and mobile), the image renders on the success screen without requiring any manual refresh."
+      ]
+    },
+    {
+      "id": "REQ-20",
+      "text": "Add explicit runtime error handling for the success/result image so that if the image fails to load, the UI shows a clear English fallback message and preserves the rest of the success layout.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "try it from the begining"
+        ]
+      },
+      "acceptanceCriteria": [
+        "If the image fails to load (e.g., 404), the user sees an English message indicating the image could not be loaded (without breaking the page layout).",
+        "If the image loads successfully, no fallback message is shown."
+      ]
+    },
+    {
+      "id": "REQ-21",
+      "text": "Ensure the frontend static assets include the success image file in the deployable public directory at the exact path \"frontend/public/assets/generated/Kanni 14.PNG\" (capital K, space, .PNG extension), and remove/avoid any references on the success screen to other similarly-named files (e.g., \"kanni 14.PNG\", \"kanni 14-1.PNG\", \"kanni 14-2.PNG\").",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "try it from the begining"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The repository contains the file at \"frontend/public/assets/generated/Kanni 14.PNG\" exactly (including capitalization and spacing).",
+        "The success/result view references only \"/assets/generated/Kanni 14.PNG\" (URL-encoded as needed) and does not reference any other success image filenames anywhere in the rendered success flow."
+      ]
+    }
+  ],
+  "constraints": [
+    "Use English for any user-facing text.",
+    "Do not edit files under frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, or any files under frontend/src/components/ui.",
+    "Do not introduce additional backend services or databases; keep the backend as a single Motoko actor (no new backend required for this fix).",
+    "Keep static image serving purely via frontend public assets; do not serve images from the backend."
+  ],
+  "nonGoals": [
+    "Fixing or diagnosing Caffeine platform internal configuration/deployment errors (outside the application code).",
+    "Adding new features beyond ensuring the existing success image displays reliably."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}

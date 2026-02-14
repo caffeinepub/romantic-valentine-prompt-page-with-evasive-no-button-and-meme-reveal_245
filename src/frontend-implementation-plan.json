@@ -1,0 +1,77 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Restart success image asset loading and ensure reliable rendering with URL-encoded filename",
+  "requirements": [
+    {
+      "id": "REQ-19",
+      "summary": "Update the success image src to use a URL-encoded path while keeping the exact case-sensitive filename \"Kanni 14.PNG\".",
+      "acceptanceCriteria": [
+        "After clicking “Yes”, the success screen requests the image via a URL-encoded path (space encoded as %20) while still referencing the exact filename \"Kanni 14.PNG\" (case-sensitive).",
+        "In Chrome and Safari (desktop and mobile), the image renders on the success screen without requiring any manual refresh."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Change the success/result <img> source to build the path from the exact filename \"Kanni 14.PNG\" and URL-encode it (so the rendered request uses %20 for spaces). Ensure the rendered success flow only uses the encoded URL derived from that exact case-sensitive filename."
+        },
+        {
+          "path": "frontend/index.html",
+          "operation": "modify",
+          "description": "Add a static preload hint for the success image using the URL-encoded path to improve first-render reliability in browsers with stricter caching/loading behavior (Chrome/Safari)."
+        }
+      ]
+    },
+    {
+      "id": "REQ-20",
+      "summary": "Add runtime error handling for the success image with an English fallback message that preserves layout.",
+      "acceptanceCriteria": [
+        "If the image fails to load (e.g., 404), the user sees an English message indicating the image could not be loaded (without breaking the page layout).",
+        "If the image loads successfully, no fallback message is shown."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Introduce success-image load state handling using <img> onError/onLoad. If loading fails, keep the success layout intact and show a clear English fallback message in place of (or alongside) the image container; if loading succeeds, render no fallback message."
+        }
+      ]
+    },
+    {
+      "id": "REQ-21",
+      "summary": "Ensure the deployable public assets contain the exact success image file and remove/avoid references to similarly-named variants.",
+      "acceptanceCriteria": [
+        "The repository contains the file at \"frontend/public/assets/generated/Kanni 14.PNG\" exactly (including capitalization and spacing).",
+        "The success/result view references only \"/assets/generated/Kanni 14.PNG\" (URL-encoded as needed) and does not reference any other success image filenames anywhere in the rendered success flow."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/assets/generated/Kanni 14.PNG",
+          "operation": "create",
+          "description": "Add the success image to the deployable public directory at the exact required path and filename (capital K, space, .PNG extension): frontend/public/assets/generated/Kanni 14.PNG."
+        },
+        {
+          "path": "frontend/public/assets/generated/kanni 14.PNG",
+          "operation": "delete",
+          "description": "Remove any incorrectly-cased or similarly-named public success image variants to prevent accidental references (if present)."
+        },
+        {
+          "path": "frontend/public/assets/generated/kanni 14-1.PNG",
+          "operation": "delete",
+          "description": "Remove any similarly-named public success image variants to prevent accidental references (if present)."
+        },
+        {
+          "path": "frontend/public/assets/generated/kanni 14-2.PNG",
+          "operation": "delete",
+          "description": "Remove any similarly-named public success image variants to prevent accidental references (if present)."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Audit and ensure the success/result view references only the single success filename \"Kanni 14.PNG\" (encoded for URL usage) and does not reference any other similarly-named images anywhere in the success flow."
+        }
+      ]
+    }
+  ]
+}

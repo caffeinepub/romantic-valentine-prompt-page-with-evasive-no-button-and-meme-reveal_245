@@ -1,0 +1,8 @@
+{
+  "frontend/src/App.tsx": "Main Valentine's Day interactive page with \"Yes\" and \"No\" buttons where the \"No\" button evades clicks, and clicking \"Yes\" shows a success view with the exact user-provided image (Kanni 14.PNG with capital K) using URL-encoded path, error handling, and loading states.",
+  "frontend/src/index.css": "Global styles with custom OKLCH romantic pink/white color palette, Google Fonts (Pacifico for headings, Quicksand for body), and theme variables for light and dark modes.",
+  "frontend/tailwind.config.js": "Tailwind configuration extended with custom romantic color tokens, Pacifico and Quicksand font families, and enhanced border radius settings.",
+  "frontend/src/hooks/useQueries.ts": "Empty placeholder file as this app requires no backend queries (all functionality is client-side).",
+  "frontend/src/hooks/useEvasiveButton.ts": "Custom React hook that manages evasive button behavior with position calculation, safe bounds checking, and pointer/touch event handlers to make a button move randomly within its container before clicks can register.",
+  "frontend/index.html": "HTML entry point with preload hint for the success image using URL-encoded path to improve first-render reliability in browsers."
+}
